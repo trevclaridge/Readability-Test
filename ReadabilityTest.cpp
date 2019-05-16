@@ -1,9 +1,9 @@
 /*******************************************************************************
  * 
  * Proj.02: A program that submits a user inputed phrase and collects data on it's
- *          readibility according to pre-determined readibility indexs.
+ *          readability according to pre-determined readability indexs.
  * 
- * File Name: readibilityTest.cpp
+ * File Name: readabilityTest.cpp
  * Name:      Trevor Claridge
  * Course:    CPTR 141
  * Date:      @@date@@
@@ -37,13 +37,13 @@
  //Prototype for longWords: a function that identifies what percent of words a "long" words
  double longWords(string);
  
- //Prototype for AutoReadibility: a function that uses the Automated readiblity index to determine readiblity for a string
- int autoReadibility(int, int, int);
+ //Prototype for Autoreadability: a function that uses the Automated readablity index to determine readablity for a string
+ int autoreadability(int, int, int);
  
- //Prototype for FleschReadiblity: a function that uses the Flesch reading ease readiblity test to deterine readiblity for a string
- double fleschReadibility(double, double, double, double);
+ //Prototype for FleschReadiblity: a function that uses the Flesch reading ease readablity test to deterine readablity for a string
+ double fleschreadability(double, double, double, double);
  
- //Prototype for AutoLevel: a function that interprets the score of the AutoReadibility function as grade level.
+ //Prototype for AutoLevel: a function that interprets the score of the Autoreadability function as grade level.
  string gradeLevel(int);
  
  
@@ -69,7 +69,7 @@ int main() {
      do {
          //show heading
             cout << "===========================================================================================================================" << endl;
-            cout << "Thank you for using the TClaridge Readiblity Tester." << endl;
+            cout << "Thank you for using the TClaridge Readablity Tester." << endl;
             cout << "Would you like to add a phrase via the console or upload a phrase via a text file?"
                  << endl
                  << "Enter 'c' for console and 't' for text file: ";
@@ -142,9 +142,9 @@ int main() {
             cout << "===========================================================================================================================" << endl;
         
         
-            cout << "According to the Automated Readiblity Index, your passage has a readiblity score of " << autoReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage)) << "." << endl;
-            cout << "According to the Flesch ease-reading readiblity test, your passasge has a readiblity score of " << fleschReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)) << "." << endl;
-            cout << "These scores indicate that your passage has a readibility of about a " << (gradeLevel(fleschReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)))) << " level." << endl;
+            cout << "According to the Automated Readablity Index, your passage has a readablity score of " << autoreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage)) << "." << endl;
+            cout << "According to the Flesch ease-reading readablity test, your passasge has a readablity score of " << fleschreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)) << "." << endl;
+            cout << "These scores indicate that your passage has a readability of about a " << (gradeLevel(fleschreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)))) << " level." << endl;
             
             //DEBUG TABLE
             if (debug) {
@@ -155,9 +155,9 @@ int main() {
                 cout << "numWords: " << numWords(enteredPassage) << endl;
                 cout << "numSentences: " << numSentences(enteredPassage) << endl;
                 cout << "longWords: " << longWords(enteredPassage) << endl;
-                cout << "autoReadibility: " << autoReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage)) << endl;
-                cout << "fleschReadibility: " << fleschReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)) << endl;
-                cout << "gradeLevel: " <<  (gradeLevel(fleschReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)))) << endl;
+                cout << "autoreadability: " << autoreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage)) << endl;
+                cout << "fleschreadability: " << fleschreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)) << endl;
+                cout << "gradeLevel: " <<  (gradeLevel(fleschreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)))) << endl;
                 cout << "[DEBUG] ===================================================================================================================" << endl;
             }
             
@@ -175,7 +175,7 @@ int main() {
                     cout << "[DEBUG] tempInput: " << tempInput << endl << endl;
                 }
                 
-                //sending statistics to Readibility_Statistics.txt
+                //sending statistics to readability_Statistics.txt
                 if (tempInput == 'Y') {
                     
                     cout << "Please enter the name of the file you would like to write to: ";
@@ -196,13 +196,13 @@ int main() {
                     fout << "===========================================================================================================================" << endl;
                 
                 
-                    fout << "According to the Automated Readiblity Index, your passage has a readiblity score of " << autoReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage)) << "." << endl;
-                    fout << "According to the Flesch ease-reading readiblity test, your passasge has a readiblity score of " << fleschReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)) << "." << endl;
-                    fout << "These scores indicate that your passage has a readibility of about a " << (gradeLevel(fleschReadibility(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)))) << " level." << endl;
+                    fout << "According to the Automated Readablity Index, your passage has a readablity score of " << autoreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage)) << "." << endl;
+                    fout << "According to the Flesch ease-reading readablity test, your passasge has a readablity score of " << fleschreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)) << "." << endl;
+                    fout << "These scores indicate that your passage has a readability of about a " << (gradeLevel(fleschreadability(numCharacters(enteredPassage), numWords(enteredPassage), numSentences(enteredPassage), numSyllables(enteredPassage, vowels)))) << " level." << endl;
                 
                     fout.close();
                     
-                    cout << "Your readibility statistics have been saved the file " << fileOutput << "." << endl;
+                    cout << "Your readabality statistics have been saved the file " << fileOutput << "." << endl;
                     cout << "===========================================================================================================================" << endl;
                     outputChoice = true;
                     
@@ -370,16 +370,16 @@ double longWords(string passage) {
 
 }
 
-//autoReadibility function body
- int autoReadibility(int ch, int wo, int se) {
+//autoreadability function body
+ int autoreadability(int ch, int wo, int se) {
     
     double autoScore = ((4.71 * (ch / wo)) + (0.5 * (wo / se)) - 21.43);
     
     return autoScore;
 }
 
-//fleschReadibility function body
-double fleschReadibility (double cha, double wor, double sen, double syl) {
+//fleschreadability function body
+double fleschreadability (double cha, double wor, double sen, double syl) {
     
     double fleschScore = (206.835 - (1.015 * (wor / sen)) - (84.6 * (syl / wor)));
 
@@ -389,52 +389,6 @@ double fleschReadibility (double cha, double wor, double sen, double syl) {
 //autoLevel function body
 string gradeLevel(int score) {
     string grade;
-    // switch (score) {
-    //     case 1:
-    //         grade = "Kindergarten grade";
-    //         break;
-    //     case 2:
-    //         grade = "First/Second grade";
-    //         break;
-    //     case 3:
-    //         grade = "Third grade";
-    //         break;
-    //     case 4:
-    //         grade = "Fourth grade";
-    //         break;
-    //     case 5:
-    //         grade = "Fifth grade";
-    //         break;
-    //     case 6:
-    //         grade = "Sixth grade";
-    //         break;
-    //     case 7:
-    //         grade = "Seventh grade";
-    //         break;
-    //     case 8:
-    //         grade = "Eighth grade";
-    //         break;
-    //     case 9:
-    //         grade = "Ninth grade";
-    //         break;
-    //     case 10:
-    //         grade = "Tenth grade";
-    //         break;
-    //     case 11:
-    //         grade = "Eleventh grade";
-    //         break;
-    //     case 12:
-    //         grade = "Twelfth grade";
-    //         break;
-    //     case 13:
-    //         grade = "College";
-    //         break;
-    //     case 14:
-    //         grade = "Professor";
-    //         break;
-    //     default:
-    //         grade = " [cannot not determine grade] ";
-    // }
     
     if (score >= 90.0) {
         grade = "Fifth grade or lower";
